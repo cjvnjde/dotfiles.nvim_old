@@ -46,20 +46,22 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
+
   {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "haydenmeade/neotest-jest"
+      "haydenmeade/neotest-jest",
+      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
       require("neotest").setup({
         adapters = {
-        require('neotest-jest')({
-          jestCommand = "jest --watch",
-        }),
-      }
+          require('neotest-jest')({
+            jestCommand = "npm run test --",
+          }),
+        }
       })
     end,
   }
