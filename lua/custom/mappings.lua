@@ -12,6 +12,10 @@ M.general = {
     ["<leader>tf"] = {"<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Run file tests"},
     ["<leader>ts"] = {"<cmd>lua require('neotest').summary.toggle()<CR>", "Toggle summary"},
     ["<leader>tk"] = {"<cmd>lua require('neotest').run.stop()<CR>", "Stop test"},
+    -- Buffers
+    ["gn"] = {"<cmd>:bn<CR>", "Open next buffer"},
+    ["gp"] = {"<cmd>:bn<CR>", "Open previous buffer"},
+    ["gd"] = {"<cmd>:bd<CR>", "Close buffer"},
   },
   v = {
     ["<leader>p"] = {"_dP", "Paste vithout saving"},
