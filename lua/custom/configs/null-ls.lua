@@ -5,15 +5,15 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
 
   -- Lua
   b.formatting.stylua,
 
   -- cpp
-  b.formatting.clang_format,
+  -- b.formatting.clang_format,
 
-  b.diagnostics.eslint_d.with({
+  b.diagnostics.eslint.with({
     condition = function()
       return require"null-ls.utils".root_pattern(
         "eslint.config.js",
@@ -27,7 +27,7 @@ local sources = {
     end
   }),
 
-  b.formatting.prettierd.with({
+  b.formatting.prettier.with({
     condition = function()
       return require"null-ls.utils".root_pattern(
         ".prettierrc",
