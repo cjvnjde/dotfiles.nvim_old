@@ -1,6 +1,7 @@
 local null_ls = require "null-ls"
 
 local b = null_ls.builtins
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local sources = {
 
@@ -13,39 +14,24 @@ local sources = {
   -- cpp
   -- b.formatting.clang_format,
 
-  b.diagnostics.eslint.with({
-    condition = function()
-      return require"null-ls.utils".root_pattern(
-        "eslint.config.js",
-        ".eslintrc",
-        ".eslintrc.js",
-        ".eslintrc.cjs",
-        ".eslintrc.yaml",
-        ".eslintrc.yml",
-        ".eslintrc.json"
-      )(vim.api.nvim_buf_get_name(0)) ~= nil
-    end
-  }),
+  b.diagnostics.eslint_d,
 
-  b.formatting.prettier.with({
-    condition = function()
-      return require"null-ls.utils".root_pattern(
-        ".prettierrc",
-        ".prettierrc.json",
-        ".prettierrc.yml",
-        ".prettierrc.yaml",
-        ".prettierrc.json5",
-        ".prettierrc.js",
-        ".prettierrc.cjs",
-        ".prettierrc.toml",
-        "prettier.config.js",
-        "prettier.config.cjs"
-      )(vim.api.nvim_buf_get_name(0)) ~= nil
-    end
-  }),
+  b.formatting.prettierd,
 }
 
 null_ls.setup {
   debug = true,
   sources = sources,
+  on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+    end,
 }
