@@ -84,7 +84,7 @@ local plugins = {
     "L3MON4D3/LuaSnip",
     version = "v2.1.0",
     lazy = false,
-    -- build = "make install_jsregexp"
+    build = "make install_jsregexp",
     config = function()
       require "custom.configs.snip"
     end,
