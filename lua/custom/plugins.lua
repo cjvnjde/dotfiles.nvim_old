@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -56,13 +56,13 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("neotest").setup({
+      require("neotest").setup {
         adapters = {
-          require('neotest-jest')({
+          require "neotest-jest" {
             jestCommand = "npm run test --",
-          }),
-        }
-      })
+          },
+        },
+      }
     end,
   },
 
@@ -71,15 +71,24 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({
+      require("nvim-surround").setup {
         -- Configuration here, or leave empty to use defaults
-      })
-    end
+      }
+    end,
   },
   {
     "mg979/vim-visual-multi",
     lazy = false,
-  }
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    version = "v2.1.0",
+    lazy = false,
+    -- build = "make install_jsregexp"
+    config = function()
+      require "custom.configs.snip"
+    end,
+  },
 }
 
 return plugins
