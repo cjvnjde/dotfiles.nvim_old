@@ -20,10 +20,6 @@ local function is_test_file()
   return contains_patterns(filename, { "%.spec%.", "%.test%." })
 end
 
-ls.setup {
-  update_events = { "TextChanged", "TextChangedI" },
-}
-
 ls.add_snippets("javascript", {
   s("log", {
     t "console.log(",
@@ -88,3 +84,7 @@ ls.add_snippets("javascriptreact", {
 
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("typescriptreact", { "typescript", "javascriptreact" })
+
+ls.setup {
+  update_events = { "TextChanged", "TextChangedI" },
+}
