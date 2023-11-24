@@ -1,29 +1,20 @@
 ---@type MappingsTable
 local M = {}
 
-M.general = {
+M.neotest = {
   n = {
-    ["<C-u>"] = { "<C-u>zz", "Move middle up" },
-    ["<C-d>"] = { "<C-d>zz", "Move middle down" },
-    ["<leader>y"] = { "+y", "Copy to clipboard" },
-    ["<leader>Y"] = { "+y", "Copy to clipboard" },
-    -- Neotest
     ["<leader>tr"] = { "<cmd>lua require('neotest').run.run()<CR>", "Run test" },
     ["<leader>tf"] = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Run file tests" },
     ["<leader>ts"] = { "<cmd>lua require('neotest').summary.toggle()<CR>", "Toggle summary" },
     ["<leader>tk"] = { "<cmd>lua require('neotest').run.stop()<CR>", "Stop test" },
-    -- Buffers
-    ["<leacer>gn"] = { "<cmd>:bn<CR>", "Open next buffer" },
-    ["<leader>gp"] = { "<cmd>:bn<CR>", "Open previous buffer" },
-    ["<leader>gd"] = { "<cmd>:bd<CR>", "Close buffer" },
-    ["<leader>tb"] = { "<cmd>:b#<CR>", "Swap Buffers" },
-    -- collapse
-    ["<leader>re"] = { "<cmd> NvimTreeCollapse <CR>", "Collapse nvimtree" },
-    -- vimsnip temporary
-    ["<leader><leader>r"] = { "<cmd>source ~/dotfiles/nvim/lua/custom/configs/snip.lua<CR>", "Source luasnim file" },
+  },
+}
+
+M.luasnip = {
+  n = {
+    ["<leader><leader>r"] = { "<cmd>source ~/dotfiles/nvim/lua/custom/configs/snip.lua<CR>", "Source luasnip file" },
   },
   i = {
-    -- vimsnip
     ["<C-k>"] = {
       function()
         local ls = require "luasnip"
@@ -55,9 +46,6 @@ M.general = {
     },
   },
   v = {
-    ["<leader>p"] = { "_dP", "Paste vithout saving" },
-    ["<leader>y"] = { "+y", "Copy to clipboard" },
-    -- vimsnip
     ["<C-k>"] = {
       function()
         local ls = require "luasnip"
@@ -78,6 +66,24 @@ M.general = {
       "Moves to the previous item within snippet",
       opts = { silent = true },
     },
+  },
+}
+
+M.general = {
+  n = {
+    ["<C-u>"] = { "<C-u>zz", "Move middle up" },
+    ["<C-d>"] = { "<C-d>zz", "Move middle down" },
+    ["<leader>y"] = { "+y", "Copy to clipboard" },
+    ["<leader>Y"] = { "+y", "Copy to clipboard" },
+    -- Buffers
+    ["<leacer>gn"] = { "<cmd>:bn<CR>", "Open next buffer" },
+    ["<leader>gp"] = { "<cmd>:bn<CR>", "Open previous buffer" },
+    ["<leader>gd"] = { "<cmd>:bd<CR>", "Close buffer" },
+    ["<leader>tb"] = { "<cmd>:b#<CR>", "Swap Buffers" },
+  },
+  v = {
+    ["<leader>p"] = { '"_dP', "Paste vithout saving" },
+    ["<leader>y"] = { "+y", "Copy to clipboard" },
   },
 }
 
