@@ -3,7 +3,6 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
--- if you just want default config for the servers then put them in a table
 local servers = { "html", "cssls", "tsserver", "clangd", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
@@ -13,5 +12,26 @@ for _, lsp in ipairs(servers) do
   }
 end
 
---
--- lspconfig.pyright.setup { blabla}
+lspconfig.emmet_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "css",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescriptreact",
+    "less",
+    "sass",
+    "scss",
+    "pug",
+    "vue",
+  },
+  init_options = {
+    html = {
+      options = {
+        ["output.selfClosingStyle"] = "xhtml",
+      },
+    },
+  },
+}
