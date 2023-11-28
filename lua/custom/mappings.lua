@@ -84,6 +84,7 @@ M.general = {
   v = {
     ["<leader>p"] = { '"_dP', "Paste vithout saving" },
     ["<leader>y"] = { "+y", "Copy to clipboard" },
+    ["y"] = { "ygv<Esc>", "Better yank" },
   },
 }
 
