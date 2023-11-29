@@ -88,4 +88,14 @@ M.general = {
   },
 }
 
+M.harpoon = {
+  n = {
+    ["<leader><leader>a"] = { '<cmd>lua require("harpoon.mark").add_file()<CR>', "Add file to the harpoon" },
+    ["<leader><leader>r"] = { '<cmd>lua require("harpoon.mark").rm_file()<CR>', "Remove file from the harpoon" },
+    ["<leader><leader>m"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', "Show marked files" },
+    ["<leader><leader>p"] = { '<cmd>lua require("harpoon.ui").nav_prev()<CR>', "Navigate to the next file" },
+    ["<leader><leader>n"] = { '<cmd>lua require("harpoon.ui").nav_next()<CR>', "Navigate to the previous file" },
+  },
+}
+
 return M

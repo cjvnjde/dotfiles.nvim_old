@@ -99,6 +99,12 @@ local plugins = {
       require("lsp-file-operations").setup()
     end,
   },
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 }
 
 return plugins
