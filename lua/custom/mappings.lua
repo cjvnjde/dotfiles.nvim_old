@@ -1,6 +1,25 @@
 ---@type MappingsTable
 local M = {}
 
+M.general = {
+  n = {
+    ["<C-u>"] = { "<C-u>zz", "Move middle up" },
+    ["<C-d>"] = { "<C-d>zz", "Move middle down" },
+    ["<leader>y"] = { "+y", "Copy to clipboard" },
+    ["<leader>Y"] = { "+y", "Copy to clipboard" },
+    -- Buffers
+    ["<leacer>gn"] = { "<cmd>:bn<CR>", "Open next buffer" },
+    ["<leader>gp"] = { "<cmd>:bn<CR>", "Open previous buffer" },
+    ["<leader>gd"] = { "<cmd>:bd<CR>", "Close buffer" },
+    ["<leader>tb"] = { "<cmd>:b#<CR>", "Swap Buffers" },
+  },
+  v = {
+    ["<leader>p"] = { '"_dP', "Paste vithout saving" },
+    ["<leader>y"] = { "+y", "Copy to clipboard" },
+    ["y"] = { "ygv<Esc>", "Better yank" },
+  },
+}
+
 M.neotest = {
   n = {
     ["<leader>tr"] = { "<cmd>lua require('neotest').run.run()<CR>", "Run test" },
@@ -11,9 +30,6 @@ M.neotest = {
 }
 
 M.luasnip = {
-  n = {
-    ["<leader><leader>r"] = { "<cmd>source ~/dotfiles/nvim/lua/custom/configs/snip.lua<CR>", "Source luasnip file" },
-  },
   i = {
     ["<C-k>"] = {
       function()
@@ -69,31 +85,12 @@ M.luasnip = {
   },
 }
 
-M.general = {
-  n = {
-    ["<C-u>"] = { "<C-u>zz", "Move middle up" },
-    ["<C-d>"] = { "<C-d>zz", "Move middle down" },
-    ["<leader>y"] = { "+y", "Copy to clipboard" },
-    ["<leader>Y"] = { "+y", "Copy to clipboard" },
-    -- Buffers
-    ["<leacer>gn"] = { "<cmd>:bn<CR>", "Open next buffer" },
-    ["<leader>gp"] = { "<cmd>:bn<CR>", "Open previous buffer" },
-    ["<leader>gd"] = { "<cmd>:bd<CR>", "Close buffer" },
-    ["<leader>tb"] = { "<cmd>:b#<CR>", "Swap Buffers" },
-  },
-  v = {
-    ["<leader>p"] = { '"_dP', "Paste vithout saving" },
-    ["<leader>y"] = { "+y", "Copy to clipboard" },
-    ["y"] = { "ygv<Esc>", "Better yank" },
-  },
-}
-
 M.harpoon = {
   n = {
     ["<leader><leader>a"] = { '<cmd>lua require("harpoon.mark").add_file()<CR>', "Add file to the harpoon" },
     ["<leader><leader>d"] = { '<cmd>lua require("harpoon.mark").rm_file()<CR>', "Remove file from the harpoon" },
     ["<leader><leader>m"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', "Show marked files" },
-    ["<leader><leader>p"] = { '<cmd>lua require("harpoon.ui").nav_prev()<CR>', "Navigate to the next file" },
+    ["<leader><leader>N"] = { '<cmd>lua require("harpoon.ui").nav_prev()<CR>', "Navigate to the next file" },
     ["<leader><leader>n"] = { '<cmd>lua require("harpoon.ui").nav_next()<CR>', "Navigate to the previous file" },
   },
 }
