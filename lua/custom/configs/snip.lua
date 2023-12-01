@@ -83,7 +83,7 @@ ls.add_snippets("javascriptreact", {
 })
 
 ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("typescriptreact", { "typescript", "javascriptreact" })
+ls.filetype_extend("typescriptreact", { "javascript", "typescript", "javascriptreact" })
 
 ls.setup {
   update_events = { "TextChanged", "TextChangedI" },

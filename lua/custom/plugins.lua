@@ -2,13 +2,9 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
-  -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
@@ -21,8 +17,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -81,15 +75,6 @@ local plugins = {
     lazy = false,
   },
   {
-    "L3MON4D3/LuaSnip",
-    version = "v2.1.0",
-    lazy = false,
-    build = "make install_jsregexp",
-    config = function()
-      require "custom.configs.snip"
-    end,
-  },
-  {
     "antosha417/nvim-lsp-file-operations",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -104,6 +89,27 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+  {
+    "Wansmer/treesj",
+    keys = { "<space>m", "<space>j", "<space>s" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesj").setup {
+        use_default_keymaps = false,
+        max_join_length = 160,
+      }
+    end,
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    version = "v2.1.0",
+    lazy = false,
+    opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+    build = "make install_jsregexp",
+    config = function()
+      require "custom.configs.snip"
+    end,
   },
 }
 

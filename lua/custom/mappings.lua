@@ -29,6 +29,12 @@ M.neotest = {
   },
 }
 
+M.treesj = {
+  n = {
+    ["<leader>n"] = { "<cmd>lua require('treesj').toggle()<CR>", "Toggle treesj" },
+  },
+}
+
 M.luasnip = {
   i = {
     ["<C-k>"] = {
