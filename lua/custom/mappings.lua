@@ -10,6 +10,12 @@ M.neotest = {
   },
 }
 
+M.treesj = {
+  n = {
+    ["<leader>n"] = { "<cmd>lua require('treesj').toggle()<CR>", "Toggle treesj" },
+  },
+}
+
 M.luasnip = {
   n = {
     ["<leader><leader>r"] = { "<cmd>source ~/dotfiles/nvim/lua/custom/configs/snip.lua<CR>", "Source luasnip file" },
