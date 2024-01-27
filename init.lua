@@ -70,8 +70,8 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  -- 'tpope/vim-fugitive',
+  -- 'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -83,7 +83,7 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -114,6 +114,7 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
+  --[[
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -188,7 +189,7 @@ require('lazy').setup({
       end,
     },
   },
-
+--]]
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -427,7 +428,12 @@ vim.defer_fn(function()
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
-
+    -- Install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+    -- List of parsers to ignore installing
+    ignore_install = {},
+    -- You can specify additional Treesitter modules here: -- For example: -- playground = {--enable = true,-- },
+    modules = {},
     highlight = { enable = true },
     indent = { enable = true },
     incremental_selection = {
